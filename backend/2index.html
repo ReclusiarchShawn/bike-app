@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brands</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .brand-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 20px;
+            max-width: 900px;
+            margin: 20px;
+        }
+
+        .brand {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding: 15px;
+            transition: transform 0.3s;
+        }
+
+        .brand img {
+            width: 100%;
+            max-width: 120px;
+            height: auto;
+            display: block;
+            margin: 0 auto 10px auto;
+            object-fit: contain;
+        }
+
+        .brand p {
+            font-size: 1rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .brand:hover {
+            transform: translateY(-5px);
+        }
+
+        @media (max-width: 600px) {
+            .brand-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="brand-grid">
+        <!-- Brand 1 -->
+        <div class="brand">
+            <img src="Royal Enfield.jpg" alt="Royal Enfield">
+        </div>
+        <!-- Brand 2 -->
+        <div class="brand">
+            <img src="Honda.jpg" alt="Honda">
+        </div>
+        <!-- Brand 3 -->
+        <div class="brand">
+            <img src="Bajaj.jpg" alt="Bajaj">
+        </div>
+        <!-- Brand 4 -->
+        <div class="brand">
+            <img src="Yamaha.jpg" alt="Yamaha">
+        </div>
+        <!-- Brand 5 -->
+        <div class="brand">
+            <img src="TVS.jpg" alt="TVS">
+        </div>
+        <!-- Brand 6 -->
+        <div class="brand">
+            <img src="Aprilia.jpg" alt="Aprilia">
+        </div>
+    </div>
+
+</body>
+
+</html>
