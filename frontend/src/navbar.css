@@ -1,0 +1,161 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+     
+    transition: all 0.2s linear;
+    scroll-behavior: smooth;
+
+}
+
+li{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 5%;
+}
+
+.navBtn{
+    margin-right: 100px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    align-items: center;
+
+}
+
+.navBtn a{
+   margin-right: 40px;
+   transition: all 0.2s linear;
+}
+
+.navBtn a:hover{
+    color: #f42b2b;
+}
+
+
+.dropdown-menu{
+    position: absolute;
+    /* top: 150; */
+    right: 0;
+    right: 50;
+    height: 0;
+    transition: 0.3s all linear;
+    
+    
+   /* padding: 20px;
+    min-height: 400px;
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: hidden; */
+    min-width: 300px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: none;
+    
+
+}
+
+
+.dropdown-menu.summoned{
+    height: unset;
+}
+
+.dropdown-menu .navBtn{
+    display: flex;
+    width: 110%;
+    flex-direction: column;
+    align-items: center;
+    
+    
+    
+}
+
+.dropdown-menu a{
+    padding: 20px;
+    background-color: white;
+    width: 100%;
+    text-align: center;
+    background-color: #b1b1b1;
+ 
+}
+
+.dropdown-menu a:hover{
+    background-color:#f42b2b;
+    color: white;
+}
+
+#dropDownBtn{
+    font-size: 1.5rem;
+    overflow-y: hidden;
+    cursor: pointer;
+    padding-top: 5px;
+    display: none;
+    
+}
+
+#dropDownBtn:hover{
+    color: #f42b2b;
+}
+
+
+@media screen and (max-width: 960px ){
+    #dropdown{
+        display: block;
+    }
+    
+
+    #mainNav,#mainNav2{
+        display: none;
+    }
+
+    #dropDownBtn{
+        display: block;
+    }
+    
+
+}
+
+@media screen and (max-width: 550px ){
+    #dropdown{
+        display: block;
+    }
+
+    #mainNav,#mainNav2{
+        display: none;
+    }
+
+    .dropdown-menu{
+        width: 100%;
+        box-shadow: none;
+        
+        
+        
+        
+
+
+    }
+
+    .dropdown-menu a{
+        padding: 30px;
+        
+    }
+
+    #dropDownBtn{
+        display: block;
+    }
+    
+
+}
+
+
