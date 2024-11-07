@@ -7,6 +7,7 @@ import bikebrands from '../2index.html' assert { type: 'text/html' };
 const search = express();
 search.use(express.json());
 
+
 search.get('/', (req, res) => {
     res.json(html);
 });

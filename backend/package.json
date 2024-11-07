@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon ./controller/searchcontrol.js"
+    "dev": "nodemon index"
   },
   "keywords": [],
   "type": "module",
