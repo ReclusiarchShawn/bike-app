@@ -1,9 +1,8 @@
 import pool from "../config/db.js";
 import bcrypt from 'bcrypt'
-const password = '12345'
-const hashedPassword = await bcrypt.hash(password, 10);
 
-console.log(hashedPassword)
+
+
 
 export const hello = async (req, res) => {
 
@@ -26,13 +25,22 @@ export const adminLogin = async (req, res) => {
 
 };
 
-async function insertadmin() {
+export async function insertadmin(req, res) {
     try {
+        const { username, email, password, conPassword } = req.body;
+
+        if (password !== conPassword) {
+            return res.json({ message: 'password not matchin' })
+        }
+
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+
         const newAdmin = await pool.query(
-            "INSERT INTO admins (username, password, email) VALUES ($1, $2, $3)",
-            ['shawn', hashedPassword, 'shawn@gmail.com']
+            "INSERT INTO admins (username, passwords, email) VALUES ($1, $2, $3)",
+            [username, hashedPassword, email]
         );
-        console.log("successssfulllll")
+        res.json(newAdmin.rows)
     } catch (err) {
         console.log(err)
     }

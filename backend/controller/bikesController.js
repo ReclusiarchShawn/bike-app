@@ -1,13 +1,17 @@
 import pool from "../config/db.js";
 
 export const getBikesID = async (req, res) => {
+    console.log("from bike id", req.params.id)
     try {
         const getBikeID = await pool.query(
-            "SELECT FROM Bike WHERE id=$1", [req.params.id])
+            "SELECT * FROM bikes WHERE bike_id=$1", [req.params.id])
         if (!getBikeID) {
             return res.json({ message: 'cannot get bikeID' })
         }
+        console.log(getBikeID.rows)
+        res.json(getBikeID.rows)
     } catch (err) {
+        console.log(err)
         res.status(500).json({ err })
     }
 
@@ -15,9 +19,10 @@ export const getBikesID = async (req, res) => {
 
 
 export const getbikes = async (req, res) => {
+    console.log("hey its working")
     try {
         const getBike = await pool.query(
-            "SELECT * FROM Bike")
+            "SELECT * FROM bikes")
         if (!getBike) {
             return res.json({ message: 'cannot get bike' })
         }
@@ -30,14 +35,17 @@ export const getbikes = async (req, res) => {
 }
 
 export async function deleteBike(req, res) {
+
     const data = req.params
     try {
         const delAdmin = await pool.query(
-            "DELETE FROM Bike WHERE id=$1", [data.id])
+            "DELETE FROM bikes WHERE bike_id=$1", [data.id])
         if (!delAdminAdmin) {
             return res.json({ message: 'cannot delete' })
         }
+        res.json(delAdmin.rows)
     } catch (err) {
+        console.log(err)
         res.status(500).json({ err })
     }
 }
@@ -47,7 +55,7 @@ export async function addBike(req, res) {
 
 
         const newAdmin = await pool.query(
-            "INSERT INTO Bike(name, modelname ) VALUES ($1, $2)", [data.name, data.model])
+            "INSERT INTO bikes(name, modelname ) VALUES ($1, $2)", [data.name, data.model])
 
         if (!newAdmin) {
             return res.json({ message: 'cannot insert' })
