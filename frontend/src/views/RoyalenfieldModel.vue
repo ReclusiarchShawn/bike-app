@@ -1,85 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Motorcycle Cards</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .container {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
-        .card {
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            width: 250px;
-        }
-        .card img {
-            width: 100%;
-            height: auto;
-        }
-        .card-content {
-            padding: 15px;
-            text-align: center;
-        }
-        .card-content h3 {
-            margin: 0;
-            font-size: 18px;
-        }
-        .card-content p {
-            margin: 5px 0;
-            color: #666;
-        }
-        .collapsible {
-            background-color: #f1f1f1;
-            border: none;
-            outline: none;
-            width: 100%;
-            text-align: left;
-            padding: 10px;
-            font-size: 16px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-        .collapsible:hover {
-            background-color: #e2e2e2;
-        }
-        .content {
-            display: none;
-            padding: 0 15px;
-            text-align: left;
-            border-top: 1px solid #ccc;
-        }
-        .select-button {
-            background-color: #ff3d3d;
-            color: white;
-            border: none;
-            width: 100%;
-            padding: 10px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-        .select-button:hover {
-            background-color: #e63333;
-        }
-    </style>
-</head>
-<body>
+<script setup>
+ 
+</script>
+
+<template>
     <div class="container">
         <div class="card">
-            <img src="hunter350rebelred.jpg" alt="Hunter 350">
+            <img src="../assets/hunter350rebelred.jpg" alt="Hunter 350">
             <div class="card-content">
                 <h3>Hunter 350</h3>
                 <p>Price: ₹1,87,000</p>
@@ -98,7 +24,7 @@
         </div>
 
         <div class="card">
-            <img src="classic350stealthblack.jpg" alt="Classic 350">
+            <img src="../assets/classic350stealthblack.jpg" alt="Classic 350">
             <div class="card-content">
                 <h3>Classic 350</h3>
                 <p>Price: ₹2,25,000</p>
@@ -117,7 +43,7 @@
         </div>
 
         <div class="card">
-            <img src="scram411graphiteblue.jpg" alt="Scram 411">
+            <img src="../assets/scram411graphiteblue.jpg" alt="Scram 411">
             <div class="card-content">
                 <h3>Scram 411</h3>
                 <p>Price: ₹2,07,837</p>
@@ -136,7 +62,7 @@
         </div>
 
         <div class="card">
-            <img src="himalayan450slatepoppyblue.jpg" alt="Himalaya 450">
+            <img src="../assets/himalayan450slatepoppyblue.jpg" alt="Himalaya 450">
             <div class="card-content">
                 <h3>Himalaya 450</h3>
                 <p>Price: ₹2,98,000</p>
@@ -154,21 +80,76 @@
             <button class="select-button">Select</button>
         </div>
     </div>
+</template>
+<style scoped>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+.container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+.card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 250px;
+}
+.card img {
+    width: 100%;
+    height: auto;
+}
+.card-content {
+    padding: 15px;
+    text-align: center;
+}
+.card-content h3 {
+    margin: 0;
+    font-size: 18px;
+}
+.card-content p {
+    margin: 5px 0;
+    color: #666;
+}
+.collapsible {
+    background-color: #f1f1f1;
+    border: none;
+    outline: none;
+    width: 100%;
+    text-align: left;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+.collapsible:hover {
+    background-color: #e2e2e2;
+}
+.content {
+    display: none;
+    padding: 0 15px;
+    text-align: left;
+    border-top: 1px solid #ccc;
+}
+.select-button {
+    background-color: #ff3d3d;
+    color: white;
+    border: none;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.select-button:hover {
+    background-color: #e63333;
+}
 
-    <script>
-        const collapsibles = document.querySelectorAll(".collapsible");
-
-        collapsibles.forEach((collapsible) => {
-            collapsible.addEventListener("click", function () {
-                this.classList.toggle("active");
-                const content = this.nextElementSibling;
-                if (content.style.display === "block") {
-                    content.style.display = "none";
-                } else {
-                    content.style.display = "block";
-                }
-            });
-        });
-    </script>
-</body>
-</html>
+</style>
