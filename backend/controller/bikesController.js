@@ -69,3 +69,18 @@ export async function addBike(req, res) {
     }
 
 }
+export const insertBikes = async (req, res) => {
+    try {
+        console.log("run")
+        const bikesdata = await json.parse(req.body.bikesdata)
+        console.log(bikesdata)
+        const bikesimgs = req.files.bikesimgs ? req.files.bikesimgs[0] : null
+        const bikesimgpath = bikesimgs ? `/uploads/${bikesimgs.filename}` : null
+        const insertBikes = await pool.query(
+            "INSERT INTO bikes(model_name,brand,price,horsepower,torque,seatheight,imp_path) values($1,$2,$3,$4,$5,$6,$7) ", [bikesdata.bikesimgs, bikesimgpath]
+        )
+        res.json({ message: 'yesssss' })
+
+    }
+    catch (err) { }
+}

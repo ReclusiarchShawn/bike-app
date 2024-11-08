@@ -15,3 +15,12 @@ export const gettransaction = async (req, res) => {
     }
 
 }
+export const insertPayInfo = async (req, res) => {
+    try {
+        const payinfo = await pool.query(
+            "INSERT INTO transactions (cname, address, phoneno,amount) VALUES ($1, $2, $3,$4)",
+
+        );
+        res.json(payinfo)
+    } catch (err) { }
+}
