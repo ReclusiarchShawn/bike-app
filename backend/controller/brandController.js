@@ -15,3 +15,23 @@ export const getbrands = async (req, res) => {
     }
 
 }
+export const insertBrand = async (req, res) => {
+    try {
+        console.log("run")
+        const branddata = await json.parse(req.body.branddata)
+        console.log(branddata)
+        const brandimgs = req.files.brandimgs ? req.files.brandimgs[0] : null
+        const brandimgpath = brandimgs ? `/uploads/${brandimgs.filename}` : null
+        const insertBrand = await pool.query(
+            "INSERT INTO brands(brand_name,img_path) values($1,$2) ", [branddata.brandimgs, brandimgpath]
+        )
+        res.json({ message: 'yesssss' })
+
+    }
+    catch (err) { }
+}
+
+
+
+
+
