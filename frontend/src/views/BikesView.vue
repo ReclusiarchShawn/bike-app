@@ -3,34 +3,44 @@
 <template>
     <div class="container">
         <form class="form">
-            <input type="text" name="bikeName" placeholder="Bike Name">
-            <input type="number" name="horsePower" placeholder="Horsepower">
-            <input type="number" name="torque" placeholder="Torque">
-            <input type="number" name="seatHeight" placeholder="Seat Height">
-            <input type="text" name="brake" placeholder="Brake">
-            <button name="addBike">Add</button>
+            <input name="Bike id" placeholder="Bike ID">
+            <input name="Model name" placeholder="Model Name">
+            <input name="Brand" placeholder="Brand">
+            <input name="Price" placeholder="Price">
+            <input name="Horsepower" placeholder="Horsepower">
+            <input name="Torque" placeholder="Torque">
+            <input name="Seatheight" placeholder="Seat Height">
+            <input name="Image" placeholder="Image">
+            <input name="Stocks" placeholder="Stocks">
+            <button type="submit" name="addBike">Add</button>
         </form>
+        
         <table>
             <thead>
                 <tr>
-                    <th>Name</th>
+                    <th>Bike id</th>
+                    <th>Model name</th>
+                    <th>Brand</th>
+                    <th>Price</th>
                     <th>Horsepower</th>
                     <th>Torque</th>
-                    <th>Seat Height</th>
-                    <th>Brake</th>
-                    <th></th>
-                    <th></th>
+                    <th>Seatheight</th>
+                    <th>Image</th>
+                    <th>Stocks</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>DSADSA</td>
+                    <td>DSAD</td>
                     <td>dsaSDA</td>
                     <td>dsadsa</td>
                     <td>dsadsad</td>
                     <td>dsadsadsa</td>
                     <td>dsadsadas</td>
                     <td>dsadsadasdsa</td>
+                    <td>dfafdgdf</td>
+                    <td>sfdsgg</td>
+
                 </tr>
             </tbody>
         </table>
@@ -82,46 +92,53 @@ form {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    max-width: 400px; 
-    padding: 20px; 
+    max-width: 320px; 
+    padding: 16px;
     margin-top: 10px;
-    border: 1px solid #ddd; 
-    border-radius: 10px; 
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
-    background-color: #f9f9f9;
-}
-
-input[type="text"], input[type="number"] {
-    width: 100%;
-    padding: 12px 15px;
-    margin: 8px 0;
-    border: 1px solid #ccc;
-    border-radius: 8px; 
-    box-sizing: border-box;
-    font-size: 16px;
-    background-color: #fff;
-    transition: border-color 0.3s ease;
-}
-
-input[type="text"]:focus, input[type="number"]:focus {
-    border-color: #007BFF;
-    outline: none;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.2); 
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+    background-color: #ebeaea;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 button {
-    margin-top: 10px;
-    padding: 8px 12px;
-    background-color: #ff0019; 
-    color: #fff;
+    margin-top: 15px;
+    padding: 8px 14px; 
+    background: linear-gradient(45deg, #ff4b2b, #ff416c);
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 15px;
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
 button:hover {
-    background-color: #218838;
-  }
+    background: linear-gradient(45deg, #28a745, #218838); 
+    transform: scale(1.05);
+}
+
+
+input, textarea, select {
+    width: 100%;
+    padding: 5px; 
+    margin: 8px 0;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 15px; 
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+label {
+    align-self: flex-start;
+    font-size: 15px; 
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 4px; 
+}
+
 
 
 </style>

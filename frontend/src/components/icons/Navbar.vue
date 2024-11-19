@@ -6,7 +6,7 @@
 
 
     <header>
-        <div class="logo">BikeBooking</div>
+        <div class="logo">BikeEasy</div>
         <nav>
           <RouterLink to="/">Home</RouterLink >
           <RouterLink to="/brand">Brand</RouterLink >

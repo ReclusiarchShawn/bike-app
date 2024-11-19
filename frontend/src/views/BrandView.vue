@@ -30,7 +30,7 @@ const brands = ref([{
     <div class="brand-grid">
         <section class="brand-container">
 
-        <RouterLink  :to="`/RoyalenfieldModel/${e.id}`" class="brand" v-for="e in brands">
+        <RouterLink  :to="`/Brand/${e.id}`" class="brand" v-for="e in brands">
             <img :src="e.imgPatn" alt="Royal Enfield">
              <div>{{e.name}}</div>
         </RouterLink>

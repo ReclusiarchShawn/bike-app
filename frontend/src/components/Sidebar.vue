@@ -3,10 +3,10 @@
 
 <template>
   <nav>
-    <RouterLink to="/admin" class="link">bikes</RouterLink >
+    <RouterLink to="/admin" class="link">Bikes</RouterLink >
     <RouterLink to="/Customers" class="link">Customers</RouterLink>
     <RouterLink to="/Payments" class="link">Payments</RouterLink>
-    <RouterLink to="" class="link">ContactUs</RouterLink>
+    <RouterLink to="/Contact" class="link">Contact Us</RouterLink>
   </nav>   
     
 </template>
@@ -14,7 +14,7 @@
 nav{
   width: 200px;
   height: 100vh;
-  border-right: 1px solid gray;
+
 }
 nav .link {
   background-color: white;
@@ -31,6 +31,7 @@ nav .link {
 }
 nav .link:hover{
   background-color: green;
+  transform: scale(1.05);
 }
 
 
