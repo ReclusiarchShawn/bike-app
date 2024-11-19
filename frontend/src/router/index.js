@@ -3,7 +3,7 @@ import Layout from '../views/Layout.vue'
 import HomeView from '../views/HomeView.vue'
 import AboutView from '@/views/AboutView.vue'
 import BrandView from '@/views/BrandView.vue'
-import RoyalenfieldModel from '@/views/RoyalenfieldModel.vue'
+import Brands from '@/views/Brands.vue'
 import ContactusView from '@/views/ContactusView.vue'
 import Services from '@/views/Services.vue'
 import AdminView from '@/views/AdminView.vue'
@@ -11,6 +11,8 @@ import AdminLayout from '@/views/AdminLayout.vue'
 import BikesView from '@/views/BikesView.vue'
 import CustomersView from '@/views/CustomersView.vue'
 import PaymentsView from '@/views/PaymentsView.vue'
+import ContactUs from '@/views/ContactUs.vue'
+import BookingPanelView from '@/views/BookingPanelView.vue'
 
 
 const router = createRouter({
@@ -52,13 +54,21 @@ const router = createRouter({
       path: 'admin-login',
       component: AdminView,
       name: 'adminlogin'
-    }]
+    },
+    {
+      path: 'BookingPanel/:bikeId',
+      component: BookingPanelView,
+      name: 'BookingPanel',
+      props: true
+
+    }
+  ]
 
     },
     {
-      path: '/RoyalenfieldModel/:id',
-      component: RoyalenfieldModel,
-      name: 'RoyalenfieldModel'
+      path: '/Brand/:id',
+      component: Brands,
+      name: 'Brand'
     },
     {
       path: '/admin',
@@ -79,6 +89,11 @@ const router = createRouter({
       path: '/payments',
       component: PaymentsView,
       name: 'Payments'
+    },
+    {
+      path: '/contact',
+      component: ContactUs,
+      name: 'contact'
     }
   ]
     }
