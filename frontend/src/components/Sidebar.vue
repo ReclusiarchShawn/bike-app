@@ -5,7 +5,7 @@
   <nav>
     <RouterLink to="/admin" class="link">Bikes</RouterLink >
     <RouterLink to="/Customers" class="link">Customers</RouterLink>
-    <RouterLink to="/Payments" class="link">Payments</RouterLink>
+    <RouterLink to="/Payments" class="link">Transactions</RouterLink>
     <RouterLink to="/Contact" class="link">Contact Us</RouterLink>
   </nav>   
     

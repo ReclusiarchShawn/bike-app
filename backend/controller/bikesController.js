@@ -1,10 +1,15 @@
 import pool from "../config/db.js";
+import axios from 'axios'
+
+
+
+
 
 export const getBikesID = async (req, res) => {
     console.log("from bike id", req.params.id)
     try {
         const getBikeID = await pool.query(
-            "SELECT * FROM bikes WHERE bike_id=$1", [req.params.id])
+            "SELECT * FROM bikes, brands WHERE bike_id=$1 AND bikes.brand_id = brands.brand_id", [req.params.id])
         if (!getBikeID) {
             return res.json({ message: 'cannot get bikeID' })
         }
@@ -33,6 +38,23 @@ export const getbikes = async (req, res) => {
     }
 
 }
+export const getbikesbyBrand = async (req, res) => {
+    const {brandId}=req.params
+    console.log("hey its working")
+    try {
+        const getBike = await pool.query(
+            "SELECT * FROM bikes WHERE brand_id =$1",[brandId])
+        if (!getBike) {
+            return res.json({ message: 'cannot get bike' })
+        }
+
+        res.json(getBike.rows)
+    } catch (err) {
+        res.status(500).json({ err })
+    }
+
+}
+
 
 export async function deleteBike(req, res) {
 
@@ -83,4 +105,15 @@ export const insertBikes = async (req, res) => {
 
     }
     catch (err) { }
+}
+export const mount=async(req,res)=>{
+    const bikes=ref([])
+const selectbikevalue=ref(null)
+    try{
+        res=await axios.get()
+        bike.value=res.data
+        selectbikevalue=bikes.value[0]
+    }catch(err){
+        console.log('errer')
+    }
 }

@@ -1,52 +1,115 @@
 <script setup>
+import { ref } from 'vue';
+
+// Form data state
+const formData = ref({
+  bikeId: '',
+  modelName: '',
+  brand: '',
+  price: '',
+  horsepower: '',
+  torque: '',
+  seatHeight: '',
+  image: null, // Holds the file
+  stocks: '',
+});
+
+// State for the list of bikes
+const bikes = ref([]);
+
+// Handle file selection
+const handleFileChange = (event) => {
+  formData.value.image = event.target.files[0];
+};
+
+// Fetch existing bikes from the server (initial load)
+const fetchBikes = async () => {
+  try {
+    const response = await fetch('http://localhost:3000/api/bikes');
+    if (!response.ok) throw new Error('Failed to fetch bikes');
+
+    bikes.value = await response.json();
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+// Submit the form and add a new bike
+const addBike = async (event) => {
+  event.preventDefault();
+
+  const data = new FormData();
+  Object.entries(formData.value).forEach(([key, value]) => {
+    data.append(key, value);
+  });
+
+  try {
+    const response = await fetch('http://localhost:3000/api/bikes', {
+      method: 'POST',
+      body: data,
+    });
+
+    if (!response.ok) throw new Error('Failed to add bike');
+
+    const result = await response.json();
+    bikes.value.push(result.bike); // Add the new bike to the list
+    console.log('Bike added:', result);
+
+    // Reset the form
+    Object.keys(formData.value).forEach((key) => {
+      formData.value[key] = key === 'image' ? null : '';
+    });
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+// Fetch bikes when the component loads
+fetchBikes();
 </script>
+
 <template>
-    <div class="container">
-        <form class="form">
-            <input name="Bike id" placeholder="Bike ID">
-            <input name="Model name" placeholder="Model Name">
-            <input name="Brand" placeholder="Brand">
-            <input name="Price" placeholder="Price">
-            <input name="Horsepower" placeholder="Horsepower">
-            <input name="Torque" placeholder="Torque">
-            <input name="Seatheight" placeholder="Seat Height">
-            <input name="Image" placeholder="Image">
-            <input name="Stocks" placeholder="Stocks">
-            <button type="submit" name="addBike">Add</button>
-        </form>
-        
-        <table>
-            <thead>
-                <tr>
-                    <th>Bike id</th>
-                    <th>Model name</th>
-                    <th>Brand</th>
-                    <th>Price</th>
-                    <th>Horsepower</th>
-                    <th>Torque</th>
-                    <th>Seatheight</th>
-                    <th>Image</th>
-                    <th>Stocks</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>DSAD</td>
-                    <td>dsaSDA</td>
-                    <td>dsadsa</td>
-                    <td>dsadsad</td>
-                    <td>dsadsadsa</td>
-                    <td>dsadsadas</td>
-                    <td>dsadsadasdsa</td>
-                    <td>dfafdgdf</td>
-                    <td>sfdsgg</td>
+  <div class="container">
+    <form class="form" @submit="addBike">
+      <input v-model="formData.bikeId" placeholder="Bike ID" required />
+      <input v-model="formData.modelName" placeholder="Model Name" required />
+      <input v-model="formData.brand" placeholder="Brand" required />
+      <input v-model="formData.price" placeholder="Price" required />
+      <input v-model="formData.horsepower" placeholder="Horsepower" required />
+      <input v-model="formData.torque" placeholder="Torque" required />
+      <input v-model="formData.seatHeight" placeholder="Seat Height" required />
+      <input type="file" @change="handleFileChange" accept="image/*" required />
+      <input v-model="formData.stocks" placeholder="Stocks" required />
+      <button type="submit">Add Bike</button>
+    </form>
 
-                </tr>
-            </tbody>
-        </table>
-
-      
-    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Bike ID</th>
+          <th>Model Name</th>
+          <th>Brand</th>
+          <th>Price</th>
+          <th>Horsepower</th>
+          <th>Torque</th>
+          <th>Seat Height</th>
+          <th>Stocks</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(bike, index) in bikes" :key="index">
+          <td>{{ bike.bikeId }}</td>
+          <td>{{ bike.modelName }}</td>
+          <td>{{ bike.brand }}</td>
+          <td>{{ bike.price }}</td>
+          <td>{{ bike.horsepower }}</td>
+          <td>{{ bike.torque }}</td>
+          <td>{{ bike.seatHeight }}</td>
+          <td>{{ bike.stocks }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </template>
 
 <style scoped>

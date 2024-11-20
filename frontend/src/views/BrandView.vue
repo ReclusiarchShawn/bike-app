@@ -1,46 +1,30 @@
 <script setup>
 import { RouterLink } from 'vue-router';
-import { ref } from 'vue';
-const brands = ref([{
-    id: 1,
-    name: "aprillia",
-    imgPatn: '../assets/Royal Enfield.jpeg'
-    
-},
-{
-    id: 2,
-    name: "aprillsia",
-     imgPatn: '../assets/Royal Enfield.jpeg'
-    
-},
-{
-    id: 3,
-    name: "aprillasfasia",
-     imgPatn: '../assets/Aprilia.jpg'
-    
-},
-{
-    id: 4,
-    name: "aprasfasfillia",
-    imgPatn: '../assets/Royal Enfield.jpeg'
-    
-}])
+
+
+import {ref, onMounted} from 'vue'
+import { storeToRefs } from 'pinia';
+import { useHomeStore } from '@/stores/home';
+
+const home = useHomeStore()
+const {brands} = storeToRefs(home)
+const {getBrands} = home
+
+onMounted(()=>{
+    getBrands()
+})
 </script>
 <template>
     <div class="brand-grid">
-        <section class="brand-container">
-
-        <RouterLink  :to="`/Brand/${e.id}`" class="brand" v-for="e in brands">
-            <img :src="e.imgPatn" alt="Royal Enfield">
-             <div>{{e.name}}</div>
+      <section class="brand-container">
+        <RouterLink :to="`/Brand/${e.brand_id}`" class="brand" v-for="e in brands" :key="e.id">
+          <img :src="e.imgPatn" :alt="e.brand_name">
+          <div>{{ e.brand_name}}</div>
         </RouterLink>
-        
-        
-    </section>
-
+      </section>
     </div>
-
-</template>
+  </template>
+  
 <style scoped>
 * {
     margin: 0;
