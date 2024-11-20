@@ -1,32 +1,113 @@
 <script setup>
+import { ref } from "vue";
 
+// Reactive variables for form fields
+const firstName = ref("");
+const lastName = ref("");
+const phone = ref("");
+const email = ref("");
+const message = ref("");
+
+// Reactive variable for submission status
+const submissionStatus = ref("");
+
+// Function to validate the form inputs
+const validateForm = () => {
+  if (!firstName.value || !lastName.value || !phone.value || !email.value || !message.value) {
+    return "All fields are required.";
+  }
+  // Basic email validation
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email.value)) {
+    return "Please enter a valid email address.";
+  }
+  return null; // No validation errors
+};
+
+// Function to simulate form submission
+const handleSubmit = (e) => {
+  e.preventDefault(); // Prevent page reload
+
+  // Validate form inputs
+  const errorMessage = validateForm();
+  if (errorMessage) {
+    submissionStatus.value = errorMessage; // Display validation error
+    return;
+  }
+
+  // Simulate form submission
+  submissionStatus.value = "Submitting..."; // Show loading message
+
+  setTimeout(() => {
+    submissionStatus.value = "Your message has been submitted successfully!";
+    clearForm(); // Clear form fields after successful submission
+  }, 2000); // Simulate a delay (e.g., API call)
+};
+
+// Function to clear the form fields
+const clearForm = () => {
+  firstName.value = "";
+  lastName.value = "";
+  phone.value = "";
+  email.value = "";
+  message.value = "";
+};
 </script>
 
 <template>
   <section class="contact">
     <div class="contact-form">
-        <h2>Contact Us</h2>
-        <form action="#">
-          <label for="first-name">First Name</label>
-          <input type="text" id="first-name" name="first-name" required>
-    
-          <label for="last-name">Last Name</label>
-          <input type="text" id="last-name" name="last-name" required>
-    
-          <label for="phone">Phone</label>
-          <input type="tel" id="phone" name="phone" required>
-    
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" required>
-    
-          <label for="message">Message</label>
-          <textarea id="message" name="message" rows="4" required></textarea>
-    
-          <button type="submit">Submit</button>
-        </form>
-      </div>
-    </section>
+      <h2>Contact Us</h2>
+      <form @submit="handleSubmit">
+        <label for="first-name">First Name</label>
+        <input
+          type="text"
+          id="first-name"
+          v-model="firstName"
+          required
+        />
+
+        <label for="last-name">Last Name</label>
+        <input
+          type="text"
+          id="last-name"
+          v-model="lastName"
+          required
+        />
+
+        <label for="phone">Phone</label>
+        <input
+          type="tel"
+          id="phone"
+          v-model="phone"
+          required
+        />
+
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          v-model="email"
+          required
+        />
+
+        <label for="message">Message</label>
+        <textarea
+          id="message"
+          v-model="message"
+          rows="4"
+          required
+        ></textarea>
+
+        <button type="submit">Submit</button>
+      </form>
+
+      <!-- Display the submission status -->
+      <p v-if="submissionStatus" style="margin-top: 20px; color: #555;">{{ submissionStatus }}</p>
+    </div>
+  </section>
 </template>
+
 <style scoped>
 
   .contact{

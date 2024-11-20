@@ -1,7 +1,7 @@
 import express from 'express'
 import { hello, insertadmin } from '../controller/adminController.js'
 import { adminLogin } from '../controller/adminController.js'
-import { addBike, deleteBike, getbikes, getBikesID } from '../controller/bikesController.js'
+import { addBike, deleteBike, getbikes, getbikesbyBrand, getBikesID } from '../controller/bikesController.js'
 import { getbrands } from '../controller/brandController.js'
 import { getbooking } from '../controller/bookController.js'
 import { getusers } from '../controller/userController.js'
@@ -9,7 +9,8 @@ import { gettransaction, insertPayInfo } from '../controller/paymentController.j
 import multer from 'multer'
 import path from 'path'
 import { fileURLToPath } from 'url'
-import { insertUsersInfo } from '../controller/customers.js'
+import { insertCustomer, insertUsersInfo } from '../controller/customers.js'
+import { contactinfo, getinquire } from '../controller/contactUs.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -28,8 +29,10 @@ const uploads = multer({
 const router = express.Router()
 router.get('/bikes/:id', getBikesID)
 router.delete('/del-bike/:id', deleteBike)
+router.post('/customer/add', insertCustomer )
 router.post('/add-bike', addBike)
 router.get('/bikes', getbikes)
+router.get('/bikes/:brandId', getbikesbyBrand)
 router.get('/brands', getbrands)
 router.get('/book', getbooking)
 router.post('/admin', insertadmin)
@@ -46,4 +49,6 @@ router.post('/add-bikes', uploads.fields([
 router.post('/userinfo', insertUsersInfo)
 router.post('/payinfo', insertPayInfo)
 router.post('/login', insertadmin)
+router.post('/getcontact-us',getinquire)
+router.post('/contact-usInfo',contactinfo)
 export default router

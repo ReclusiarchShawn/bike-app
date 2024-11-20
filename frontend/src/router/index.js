@@ -13,10 +13,11 @@ import CustomersView from '@/views/CustomersView.vue'
 import PaymentsView from '@/views/PaymentsView.vue'
 import ContactUs from '@/views/ContactUs.vue'
 import BookingPanelView from '@/views/BookingPanelView.vue'
+import Checkoutview from '@/views/CheckoutView.vue'
 
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
@@ -63,12 +64,18 @@ const router = createRouter({
 
     }
   ]
-
     },
     {
-      path: '/Brand/:id',
+      path: '/Brand/:brandId',
       component: Brands,
-      name: 'Brand'
+      name: 'Brand',
+      props: true
+    },
+    {
+      path: '/CheckoutView/:bikeId',
+      component: Checkoutview,
+      name: 'Checkout',
+      props: true
     },
     {
       path: '/admin',

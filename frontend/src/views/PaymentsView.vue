@@ -5,10 +5,13 @@
     <table>
         <thead>
             <tr>
-                <th>Payment id</th>
-                <th>Amount</th>
-                <th>Payment time</th>
-                <th>Customer id</th>
+                <th>trans_id</th>
+                <th>Customer Name</th>
+                <th>address</th>
+                <th>email</th>
+                <th>Phoneno</th>
+                <th>amount</th>
+                <th>booking_id</th>
                
             </tr>
         </thead>
@@ -17,6 +20,9 @@
                 <td>DSADSA</td>
                 <td>dsaSDA</td>
                 <td>dsadsa</td>
+                <td>dsadsad</td>
+                <td>dsadsad</td> 
+                <td>dsadsad</td>
                 <td>dsadsad</td>
                
             </tr>
