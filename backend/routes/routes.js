@@ -5,7 +5,7 @@ import { addBike, deleteBike, getbikes, getbikesbyBrand, getBikesID } from '../c
 import { getbrands } from '../controller/brandController.js'
 import { getbooking } from '../controller/bookController.js'
 import { getusers } from '../controller/userController.js'
-import { gettransaction, insertPayInfo } from '../controller/paymentController.js'
+import { createOrder, gettransaction, insertPayInfo, paymentDetails, verifyPayment } from '../controller/paymentController.js'
 import multer from 'multer'
 import path from 'path'
 import { fileURLToPath } from 'url'
@@ -51,4 +51,11 @@ router.post('/payinfo', insertPayInfo)
 router.post('/login', insertadmin)
 router.post('/getcontact-us',getinquire)
 router.post('/contact-usInfo',contactinfo)
+
+// payment
+router.post('/create-order', createOrder)
+router.post('/store-payment-details', )
+router.post('/verify-payment', verifyPayment)
+router.post('/payment-details', paymentDetails)
+
 export default router
